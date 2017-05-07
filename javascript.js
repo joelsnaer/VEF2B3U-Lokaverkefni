@@ -32,13 +32,11 @@ function skrifa(gogn){
 
 moment.lang("is"); //Stillt moment format-ið á íslensku
 function upplysingar(el_li, data){
-    //ég ætla að bæta við info-i í li tag
-    //bæta við auka info
+
     var el_info = document.createElement("ul");
 
     for (variable in data) {
         console.log(variable);
-        //data[i]
         if (variable !== "imageSource" && variable !== "dateOfShow") { //Ef breytan er ekki myndin eða dagsetningin fyrir tónleikana er gert þetta
             var el_li2 = document.createElement('li');
             var el_text = document.createTextNode(data[variable]);
@@ -59,35 +57,26 @@ function upplysingar(el_li, data){
 }
 
 
-
-//-------------------------------SEARCH BARINN ---------------------------------
-//Þetta er mest allt kóði úr bókinni breyttur smá til að virka á síðunni minni
-//Með þessum leitarreit er hægt að leita af hverju sem er sem tengist atburðinum
-//eins og dagsetningu, nafni, stað, og það kemur upp
 function search(){
-    var $elementid = $('#container .flokka');                     //nær í alla flokkana eða allt í containerinum með clasann .flokka á
-    var $leit = $('#leita');                              //element fyrir search barinn minn
-    var cacheid = [];                                             //array sem infoið um atbyrðina eru geymdir í
-
+    var $elementid = $('#container .flokka');
+    var $leit = $('#leita');
+    var cacheid = [];
     $elementid.each(function() {
-        cacheid.push({                                              //pushar inn í chacheid arrayið
-            element: this,                                            //pushar elementinu sem er li tagið í þessu tilfelli
-            text: this.innerHTML.trim().toUpperCase()                 //tekur öll white spaces úr textanum og setur það í uppercase
+        cacheid.push({
+            element: this,
+            text: this.innerHTML.trim().toUpperCase()
         });
     });
-//functionið sem filterar
     function filter() {
-        var query = this.value.trim().toUpperCase();                //tekur inn querið hja notanda trimmar það og setur í uppercase
-        cacheid.forEach(function(img) {                             //keyrir í gegnum cacheid arrayið
+        var query = this.value.trim().toUpperCase();
+        cacheid.forEach(function(img) {
             var index = 0;
-            if (query) {                                              //athuga ef query er tómt
-                index = img.text.indexOf(query);                        //athuga ef query textinn er í elementinu
+            if (query) {
+                index = img.text.indexOf(query);
             }
-            img.element.style.display = index === -1 ? 'none' : '';   //sýna eða fela
+            img.element.style.display = index === -1 ? 'none' : '';
         });
     }
-    //
-    //ef browserinn supportar oninput eða "input event" þá er það notað, annars er notað keyup
     if ('oninput' in $leit[0]) {
         $leit.on('input', filter);
     } else {
@@ -96,55 +85,46 @@ function search(){
 }
 
 
-
-//------------------------------- Image Filtering ---------------------------------
-//Þetta er nánast allt kóði úr bókinni, þó ég breyti smá þannig það virkar á minni síðu
 function filter() {
-    var $vidburdur = $('#container .flokka');          //Geymir öll elementin
-    var $takkar = $('#buttons');                    //Geymir alla takkana
-    var tagged = {};                                 // býr til tag object
-
-    //hérnar er keyrt í gegnum allt og skoðað data tögin og þau svo sett í array
-    $vidburdur.each(function() {
-      var li = this;                                //variable sem geymir þetta li element
-      var tags = $(this).data('tags');              // þær í gögnin um li tagið (data tagið)
-      if (tags) {                                   // ef elementið er með tag
-        tags.split(',').forEach(function(tagName) { // splittar tögunum á kommu ef það er einn atburður með mörg tög
-          if (tagged[tagName] == null) {            // ef atburðurinn er ekki með tag þá keyrist þetta
-            tagged[tagName] = [];                   // bætir við tómu arrayi í tagged objectið
+    var $tonleikar = $('#container .flokka');
+    var $btn = $('#buttons');
+    var tagged = {};
+    $tonleikar.each(function() {
+      var li = this;
+      var tags = $(this).data('tags');
+      if (tags) {
+        tags.split(',').forEach(function(tagName) {
+          if (tagged[tagName] == null) {
+            tagged[tagName] = [];
           }
-          tagged[tagName].push(li);                 //Bætir li elementinu við tagged objectið
+          tagged[tagName].push(li);
         });
       }
     });
-
-//Hérna er búið til show all takkann sem sýnir alla viðburðina
-    $('<button/>', {                                 // Create empty button
-      text: 'Allir atburðir',                              // Add text 'show all'
-      class: 'active',                               // Make it active
-      click: function() {                            // Add onclick handler to
-        $(this)                                      // Get the clicked on button
-          .addClass('active')                        // Add the class of active
-          .siblings()                                // Get its siblings
-          .removeClass('active');                    // Remove active from siblings
-        $vidburdur.show();                                // Show all images
+    $('<button/>', {
+      text: 'Allir atburðir',
+      class: 'active',
+      click: function() {
+        $(this)
+          .addClass('active')
+          .siblings()
+          .removeClass('active');
+        $tonleikar.show();
       }
-    }).appendTo($takkar);                           // Add to buttons
-
-    //Hérna er búið til sér takka fyrir hvern einstaka viðburð
-    $.each(tagged, function(tagName) {               // For each tag name
-      $('<button/>', {                               // Create empty button
-        text: tagName + ' (' + tagged[tagName].length + ')', // Add tag name
-        click: function() {                          // Add click handler
-          $(this)                                    // The button clicked on
-            .addClass('active')                      // Make clicked item active
-            .siblings()                              // Get its siblings
-            .removeClass('active');                  // Remove active from siblings
-          $vidburdur                                      // With all of the images
-            .hide()                                  // Hide them
-            .filter(tagged[tagName])                 // Find ones with this tag
-            .show();                                 // Show just those images
+    }).appendTo($btn);
+    $.each(tagged, function(tagName) {
+      $('<button/>', {
+        text: tagName + ' (' + tagged[tagName].length + ')',
+        click: function() {
+          $(this)
+            .addClass('active')
+            .siblings()
+            .removeClass('active');
+          $tonleikar
+            .hide()
+            .filter(tagged[tagName])
+            .show();
         }
-      }).appendTo($takkar);                         // Add to the buttons
+      }).appendTo($btn);
     });
 }
