@@ -1,0 +1,124 @@
+html,body {
+    margin:auto;
+    padding:0;
+    height:100%;
+}
+
+header {
+    width: 100%;
+    background-color: #3498db;
+    margin: 0 auto;
+    text-align: center;
+    height: 200px;
+}
+
+h1 {
+  text-align: center;
+  margin: 0;
+  font-size: 7em;
+}
+
+#container {
+    height: 100%;
+    padding: 0;
+    width: 100%;
+    background-color: #bdc3c7;
+    list-style: none;
+    padding-bottom: 170px;
+}
+.concert {
+    position: relative;
+    float: left;
+    width: 23%;
+    height: 200px;
+    display: inline;
+    margin: 1%;
+}
+.concert img {
+    z-index: -1;
+    width: 100%;
+}
+.concert img {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.concert div {
+    float: left;
+    position: absolute;
+    width: 265px;
+    bottom: 0px;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+}
+img:hover + div {
+    height: 180px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.concert:hover .upplys {
+    display: block;
+}
+.concert div:hover {
+    height: 180px;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.concert .upplys {
+    display: none;
+}
+.upplys {
+    width: 265px;
+    list-style: none;
+    position: absolute;
+    color: white;
+    bottom: 0;
+    padding: 10px;
+    height: 180px;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.upplys:hover div {
+    display: none;
+}
+
+input[type=text]{
+  border-radius: 4px;
+  width: 30%;
+  height: 30px;
+}
+
+.buttons {
+width: 100%;
+}
+
+@media all and (min-width: 48em) {
+  header {
+      width: 65%;
+      background-color: #3498db;
+      margin: 0 auto;
+      text-align: center;
+      height: 200px;
+  }
+
+  #container {
+      height: 100%;
+      padding: 0;
+      width: 65%;
+      margin: 0 auto;
+      background-color: #bdc3c7;
+      list-style: none;
+      padding-bottom: 170px;
+  }
+
+  .concert {
+      position: relative;
+      float: left;
+      width: 23%;
+      height: 200px;
+      display: inline;
+      margin: 1%;
+  }
+}
