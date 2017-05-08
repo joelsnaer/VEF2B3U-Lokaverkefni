@@ -5,7 +5,7 @@ html,body {
 }
 
 header {
-    width: 100%;
+    width: 76.45%;
     background-color: #3498db;
     margin: 0 auto;
     text-align: center;
@@ -19,9 +19,10 @@ h1 {
 }
 
 #container {
-    height: 100%;
+    height: 105%;
     padding: 0;
-    width: 100%;
+    width: 76.45%;
+    margin: 0 auto;
     background-color: #bdc3c7;
     list-style: none;
     padding-bottom: 170px;
@@ -44,8 +45,8 @@ h1 {
 .concert div {
     float: left;
     position: absolute;
-    width: 265px;
-    bottom: 0px;
+    width: 314px;
+    bottom: -24px;
     z-index: 1000;
     background-color: rgba(0, 0, 0, 0.7);
     padding: 10px;
@@ -70,13 +71,13 @@ img:hover + div {
     display: none;
 }
 .upplys {
-    width: 265px;
+    width: 314px;
     list-style: none;
     position: absolute;
     color: white;
-    bottom: 0;
+    bottom: -24px;
     padding: 10px;
-    height: 180px;
+    height: 200px;
     z-index: 1000;
     background-color: rgba(0, 0, 0, 0.7);
 }
@@ -92,33 +93,4 @@ input[type=text]{
 
 .buttons {
 width: 100%;
-}
-
-@media all and (min-width: 48em) {
-  header {
-      width: 65%;
-      background-color: #3498db;
-      margin: 0 auto;
-      text-align: center;
-      height: 200px;
-  }
-
-  #container {
-      height: 100%;
-      padding: 0;
-      width: 65%;
-      margin: 0 auto;
-      background-color: #bdc3c7;
-      list-style: none;
-      padding-bottom: 170px;
-  }
-
-  .concert {
-      position: relative;
-      float: left;
-      width: 23%;
-      height: 200px;
-      display: inline;
-      margin: 1%;
-  }
 }
