@@ -16,14 +16,14 @@ function skrifa(gogn){
     for (var i = 0; i < data.length; i++) {
         var el_li = document.createElement("li");
         el_li.className = "concert";
-        var el_title = document.createElement("div");
+        var el_div = document.createElement("div");
         var el_skrifa = document.createTextNode(data[i].eventDateName);
-        el_title.appendChild(el_skrifa);
+        el_div.appendChild(el_skrifa);
         var el_mynd = document.createElement("img");
         el_mynd.src = data[i].imageSource;
         el_li.setAttribute('data-tags', data[i].eventHallName);
         el_li.appendChild(el_mynd);
-        el_li.appendChild(el_title);
+        el_li.appendChild(el_div);
         el_li.className += " flokka";
         container.appendChild(el_li);
         upplysingar(el_li, data[i]); //Keyrt aðferðina til að bæta við upplysingum
