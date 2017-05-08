@@ -1,6 +1,6 @@
 # VEF2B3U-Lokaverkefni
 Vefsíða http://tsuts.tskoli.is/2t/2812992399/lokaverkefni-vef2b3u/
-## ækja sköl
+## Sækja sköl
 Notað ajax til að sækja skjölin af APIS.is
 
 ## Birta upplýsingar
