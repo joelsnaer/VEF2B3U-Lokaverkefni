@@ -1,11 +1,10 @@
 html,body {
     margin:auto;
     padding:0;
-    height:100%;
 }
 
 header {
-    width: 76.45%;
+    width: 100%;
     background-color: #3498db;
     margin: 0 auto;
     text-align: center;
@@ -15,44 +14,46 @@ header {
 h1 {
   text-align: center;
   margin: 0;
-  font-size: 7em;
+  padding-top: 20px;
+  font-size: 4.5em;
 }
 
 #container {
-    height: 107%;
+    height: 100%;
     padding: 0;
-    width: 76.45%;
+    width: 100%%;
     margin: 0 auto;
     background-color: #bdc3c7;
     list-style: none;
     padding-bottom: 170px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 .concert {
     position: relative;
     float: left;
-    width: 23%;
     height: 200px;
     display: inline;
     margin: 1%;
+    padding-left: 30px;
 }
 .concert img {
     z-index: -1;
-    width: 100%;
-}
-.concert img {
     background-color: rgba(0, 0, 0, 0.7);
+    width: 115%;
+    height: 100%;
 }
 .concert div {
     float: left;
     position: absolute;
-    width: 314px;
+    width: 100%;
     bottom: -24px;
     z-index: 1000;
     background-color: rgba(0, 0, 0, 0.7);
     padding: 10px;
     color: #FFFFFF;
     font-weight: bold;
-    font-family: 'Raleway', sans-serif;
     font-size: 14px;
 }
 img:hover + div {
@@ -71,13 +72,13 @@ img:hover + div {
     display: none;
 }
 .upplys {
-    width: 314px;
+    width: 100%;
+    height: 100%;
     list-style: none;
     position: absolute;
     color: white;
     bottom: -24px;
     padding: 10px;
-    height: 200px;
     z-index: 1000;
     background-color: rgba(0, 0, 0, 0.7);
 }
